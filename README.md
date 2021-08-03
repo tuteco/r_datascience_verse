@@ -18,4 +18,6 @@ To be AWS ready, we installed python pip
 Already installed by rocker/verse image is the [reticulate](https://rstudio.github.io/reticulate/) package,
 that allows interoperability between R and python.
 
+The AWS ClI is also installed.
+
 
