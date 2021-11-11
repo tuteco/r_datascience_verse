@@ -1,0 +1,45 @@
+name: release new version to docker hub
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Semantic Release
+        id: semantic
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: 16
+          extra_plugins: |
+            @semantic-release/changelog
+            @semantic-release/git
+            conventional-changelog-conventionalcommits
+          branches: |
+            ['main']
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and push
+        if: steps.semantic.outputs.new_release_published == 'true'
+        id: docker_build
+        run: |
+          docker build -t tuteco/rstudio_datascience_verse:latest . -f Dockerfile
+          docker tag tuteco/rstudio_datascience_verse:latest tuteco/rstudio_datascience_verse:${{ steps.semantic.outputs.new_release_version }}
+          docker push tuteco/rstudio_datascience_verse:${{ steps.semantic.outputs.new_release_version }}
+          docker push tuteco/rstudio_datascience_verse:latest
+
+      - name: release digest
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: echo ${{ steps.semantic.outputs.new_release_version }}
