@@ -16,7 +16,7 @@ def run(context):
     """
         run the local image with tag 'latest-dev'
     """
-    context.run(f"docker run --rm --name {CONTAINER_NAME}-{CONTAINER_INSTANCE} -p 8888:8888 {IMAGE_NAME}:latest-dev")
+    context.run(f"docker run --rm --name {CONTAINER_NAME}-{CONTAINER_INSTANCE} -e PASSWORD=tutecor -p 8787:8787 {IMAGE_NAME}:latest-dev")
 
 @task(help={
     "images": "remove images used by service"
