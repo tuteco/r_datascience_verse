@@ -1,6 +1,6 @@
 from invoke import task
 
-CONTAINER_NAME = 'rstudio_datscience_verse'
+CONTAINER_NAME = 'rstudio_datascience_verse'
 IMAGE_NAME = f"tuteco/{CONTAINER_NAME}"
 CONTAINER_INSTANCE = 'default'
 

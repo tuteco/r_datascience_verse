@@ -1,15 +1,18 @@
-FROM rocker/verse
+FROM rocker/verse:4.1.2
+
+RUN /rocker_scripts/install_python.sh
+
+RUN /rocker_scripts/install_pandoc.sh
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends --yes \
-    python3-pip \
     awscli \
     jq \
-    pandoc \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --upgrade awscli \
-    && pip3 install boto3 \
     && install2.r --error -r 'http://cran.rstudio.com' botor \
+    markdown \
+    kableExtra \
     pacman \
     RJDBC \
     RODBC \
@@ -33,5 +36,12 @@ RUN apt-get update -y \
     stringdist \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/downloaded_packages/*
+
+USER rstudio
+
+COPY ./scripts/* /home/rstudio
+RUN /home/rstudio/install_py_packages.R
+
+user root
 
 WORKDIR /home/rstudio
