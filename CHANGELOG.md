@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/tuteco/rstudio_datascience_verse/compare/v1.1.0...v1.2.0) (2021-11-17)
+
+
+### Features
+
+* added python package awswrangler and psycopg2-binary ([835e5bf](https://github.com/tuteco/rstudio_datascience_verse/commit/835e5bf9b0ea03c52cd04ba50abafe8b8ed16e7a))
+
 ## [1.1.0](https://github.com/tuteco/rstudio_datascience_verse/compare/v1.0.0...v1.1.0) (2021-11-17)
 
 
