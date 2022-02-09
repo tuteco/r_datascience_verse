@@ -2,6 +2,7 @@ FROM rocker/verse:4.1.2
 
 RUN /rocker_scripts/install_python.sh
 
+# install shiny server
 RUN /rocker_scripts/install_shiny_server.sh
 
 RUN apt-get update -y \
