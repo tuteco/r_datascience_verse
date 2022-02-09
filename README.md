@@ -1,4 +1,4 @@
-# AWS ready RStudio for datascience
+# AWS ready RStudio with shiny server for datascience
 ```
    _         _                 
   | |_ _   _| |_ ___  ___ ___  
@@ -10,6 +10,8 @@
 ```
 Base for this docker image is the 
 [rocker/verse](https://github.com/rocker-org/rocker-versioned2)
+
+with the addition of shiny server. 
 
 To be AWS ready, we installed python pip
 - [boto3](https://aws.amazon.com/sdk-for-python/) - default python AWS library allowing to work with local ECS endpoints

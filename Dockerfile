@@ -2,7 +2,7 @@ FROM rocker/verse:4.1.2
 
 RUN /rocker_scripts/install_python.sh
 
-RUN /rocker_scripts/install_pandoc.sh
+RUN /rocker_scripts/install_shiny_server.sh
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends --yes \
@@ -34,6 +34,9 @@ RUN apt-get update -y \
     multcomp \
     qualV \
     stringdist \
+    shinythemes \
+    plotly \
+    RPostgreSQL \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/downloaded_packages/*
 
