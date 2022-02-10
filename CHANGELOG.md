@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/tuteco/rstudio_datascience_verse/compare/v1.2.0...v1.3.0) (2022-02-10)
+
+
+### Features
+
+* shiny server added, bumped to new package versions ([3bebe1e](https://github.com/tuteco/rstudio_datascience_verse/commit/3bebe1e1c01d3c7e745853fcc439dd0996d6caec))
+
 ## [1.2.0](https://github.com/tuteco/rstudio_datascience_verse/compare/v1.1.0...v1.2.0) (2021-11-17)
 
 
